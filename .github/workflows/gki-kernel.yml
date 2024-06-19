@@ -168,6 +168,8 @@ jobs:
           sudo apt-get install llvm-15 -y
           ast-grep -U -p '$$$ check_exports($$$) {$$$}' -r '' common/scripts/mod/modpost.c
           ast-grep -U -p 'check_exports($$$);' -r '' common/scripts/mod/modpost.c
+          # for android11-5.4 and android12-5.4
+          ast-grep -U -p 'err |= check_exports($$$);' -r '' common/scripts/mod/modpost.c
           sed -i '/config KSU/,/help/{s/default y/default m/}' common/drivers/kernelsu/Kconfig
           echo "drivers/kernelsu/kernelsu.ko" >> common/android/gki_aarch64_modules
 

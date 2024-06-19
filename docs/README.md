@@ -26,6 +26,17 @@ With this, WSA, ChromeOS, and container-based Android are all supported.
 
 Currently, only `arm64-v8a` and `x86_64` are supported.
 
+## About this fork
+
+KernelSU officially dropped support for non-GKI 2.0 kernels since the 1.0.0 release. This fork brings back support for 5.4 kernels and adds support for GKI 1.0 
+(android11-5.4 and android12-5.4) using LKM.
+
+> [!CAUTION]
+> GKI 1.0 support is totally untested and could possibly not work at all.
+
+> [!WARNING]
+> Your kernel being at version 5.4 does not mean it is GKI 1.0. Non-GKI kernels at version 5.4 still have to be built manually.
+
 ## Usage
 
 - [Installation Instruction](https://kernelsu.org/guide/installation.html)

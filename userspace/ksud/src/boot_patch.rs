@@ -161,7 +161,7 @@ pub fn restore(
 
     let kmi = get_current_kmi().unwrap_or_else(|_| String::from(""));
 
-    let skip_init = kmi.starts_with("android12-");
+    let skip_init = kmi.starts_with("android12-") || kmi.starts_with("android11-");
 
     let (bootimage, bootdevice) = find_boot_image(&image, skip_init, false, false, workdir)?;
 
@@ -319,7 +319,7 @@ fn do_patch(
         get_current_kmi().context("Unknown KMI, please choose LKM manually")?
     };
 
-    let skip_init = kmi.starts_with("android12-");
+    let skip_init = kmi.starts_with("android12-") || kmi.starts_with("android11-");
 
     let (bootimage, bootdevice) =
         find_boot_image(&image, skip_init, ota, is_replace_kernel, workdir)?;

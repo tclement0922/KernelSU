@@ -19,8 +19,13 @@
 static struct policydb *get_policydb(void)
 {
 	struct policydb *db;
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 0)
 	struct selinux_policy *policy = rcu_dereference(selinux_state.policy);
 	db = &policy->policydb;
+#else
+	struct selinux_ss *ss = rcu_dereference(selinux_state.ss);
+	db = &ss->policydb;
+#endif
 	return db;
 }
 
